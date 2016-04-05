@@ -1,13 +1,14 @@
 = foundation_devise_error_messages!
-.large-3.large-centered.columns
-  .login-box
-    .row
-      .large-12.columns
-        = form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post}) do |f|
-          .row
-            h5.text-center= t('.resend_confirmation_instructions', :default => 'Resend confirmation instructions')
-          .row
-            = f.email_field :email, autofocus: true, class: "large-12 columns", placeholder: "Email"
-          .row
-            = f.submit t('.resend_confirmation_instructions', :default => 'Resend confirmation instructions'), class: "button expand large-12 large-centered columns"
-      = render "devise/shared/links"
+.row
+  .medium-6.medium-centered.columns
+    .login-box
+      .row
+        .large-12.columns
+          = form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post}) do |f|
+            .row
+              h5.text-center= t('.resend_confirmation_instructions', :default => 'Resend confirmation instructions')
+            .row
+              = f.email_field :email, autofocus: true, class: "large-12 columns", placeholder: "Email"
+            .row
+              = f.submit t('.resend_confirmation_instructions', :default => 'Resend confirmation instructions'), class: "button expand large-12 large-centered columns"
+        = render "devise/shared/links"

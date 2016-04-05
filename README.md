@@ -42,6 +42,11 @@ Support is also provided to generate slim or haml files eg
 
    	rails g devise:views:foundation_templates slim
 
+## Example
+
+Sample Application can be found at this link - [Devise Foundation Views Application](https://github.com/ethiraj-srinivasan/devise-foundation-views)
+
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/ethirajsrinivasan/devise-foundation-views.
