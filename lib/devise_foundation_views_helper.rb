@@ -10,10 +10,12 @@ module DeviseFoundationViewsHelper
       resource: resource.class.model_name.human.downcase)
 
     html = <<-HTML
-    <div data-alert class="alert-box alert radius">
+    <div data-closable class="alert callout">
       <h5>#{sentence}</h5>
       <ul>#{messages}</ul>
-      <a href="#" class="close">&times;</a>
+      <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
     HTML
 
