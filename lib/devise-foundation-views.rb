@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "logger"
 require "rails"
 require "devise_foundation_views_helper"
 require "devise_layout_helper"
