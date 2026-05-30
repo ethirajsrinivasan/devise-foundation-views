@@ -19,6 +19,8 @@ jobs:
             rails: '7.2'
           - ruby: '3.0'
             rails: '8.0'
+          - ruby: '3.1'
+            rails: '8.0'
 
     env:
       RAILS_VERSION: ${{ matrix.rails }}
@@ -31,7 +33,7 @@ jobs:
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby }}
-        bundler: '2.6'
+        bundler: '2.4.22'
         bundler-cache: true
 
     - name: Run tests
@@ -50,7 +52,7 @@ jobs:
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: '3.3'
-        bundler: '2.6'
+        bundler: '2.4.22'
         bundler-cache: true
 
     - name: Run tests
@@ -69,7 +71,7 @@ jobs:
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: '3.3'
-        bundler: '2.6'
+        bundler: '2.4.22'
         bundler-cache: true
 
     - name: Run RuboCop
@@ -88,7 +90,7 @@ jobs:
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: '3.3'
-        bundler: '2.6'
+        bundler: '2.4.22'
         bundler-cache: true
 
     - name: Security audit
