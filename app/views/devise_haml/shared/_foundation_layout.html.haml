@@ -1,0 +1,7 @@
+.grid-container.devise-foundation-views
+  .grid-x.grid-padding-x.align-center
+    .medium-10.large-7.cell
+      .devise-form-card
+        - if local_assigns[:title].present?
+          %h2.text-center.devise-form-card__title= title
+        = yield

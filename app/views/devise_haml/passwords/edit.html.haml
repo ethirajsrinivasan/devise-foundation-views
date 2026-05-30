@@ -1,17 +1,16 @@
-= foundation_devise_error_messages!
-.row
-  .medium-6.medium-centered.columns
-    .login-box
-      .row
-        .large-12.columns
-          = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put}) do |f|
-            = f.hidden_field :reset_password_token
-            .row
-              %h5.text-center= t('.change_your_password', :default => 'Change your password')
-            .row
-              = f.password_field :password, autocomplete: "off", class: "large-12 columns", placeholder: "New Password"
-            .row
-              = f.password_field :password_confirmation, autocomplete: "off", class: "large-12 columns", placeholder: "Confirm New Password"
-            .row
-              = f.submit t('.change_my_password', :default => 'Change my password'), class: "button expand large-12 large-centered columns"
-        = render "devise/shared/links"
+= render layout: "devise/shared/foundation_layout", locals: { title: t(".change_your_password", default: "Change your password") } do
+  = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+    = render "devise/shared/error_messages", resource: resource
+    = f.hidden_field :reset_password_token
+    .grid-x.grid-padding-x
+      .cell
+        = f.label :password, t(".new_password", default: "New password")
+        - if @minimum_password_length
+          %p.help-text= t("devise.shared.minimum_password_length", count: @minimum_password_length, default: "(#{@minimum_password_length} characters minimum)")
+        = f.password_field :password, autofocus: true, autocomplete: "new-password"
+      .cell
+        = f.label :password_confirmation, t(".confirm_new_password", default: "Confirm new password")
+        = f.password_field :password_confirmation, autocomplete: "new-password"
+      .cell
+        = f.submit t(".change_my_password", default: "Change my password"), class: "button expanded"
+  = render "devise/shared/links"

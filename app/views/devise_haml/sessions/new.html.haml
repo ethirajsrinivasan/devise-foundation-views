@@ -1,20 +1,20 @@
-= foundation_devise_error_messages!
-.row
-  .medium-6.medium-centered.columns
-    .login-box
-      .row
-        .large-12.columns
-          = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-            .row
-              %h5.text-center= t('.sign_in', :default => "Sign in")
-            .row
-              = f.email_field :email, autofocus: true, class: "large-12 columns", placeholder: "Email"
-            .row
-              = f.password_field :password, autocomplete: "off", class: "large-12 columns", placeholder: "Password"
-            - if devise_mapping.rememberable?
-              .row
-                = f.check_box :remember_me
-                = f.label :remember_me
-            .row
-              = f.submit  t('.sign_in', :default => "Sign in"), class: "button expand large-12 large-centered columns"
-        = render "devise/shared/links"
+= render layout: "devise/shared/foundation_layout", locals: { title: t(".sign_in", default: "Log in") } do
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    = render "devise/shared/error_messages", resource: resource
+    .grid-x.grid-padding-x
+      .cell
+        = f.label :email
+        = f.email_field :email, autofocus: true, autocomplete: "email"
+      .cell
+        = f.label :password
+        = f.password_field :password, autocomplete: "current-password"
+      - if devise_mapping.rememberable?
+        .cell
+          .grid-x.align-middle
+            .cell.shrink
+              = f.check_box :remember_me
+            .cell.auto
+              = f.label :remember_me
+      .cell
+        = f.submit t(".sign_in", default: "Log in"), class: "button expanded"
+  = render "devise/shared/links"

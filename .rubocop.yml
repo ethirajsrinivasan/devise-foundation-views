@@ -1,0 +1,50 @@
+AllCops:
+  TargetRubyVersion: 3.0
+  NewCops: enable
+  SuggestExtensions: false
+  Exclude:
+    - 'vendor/**/*'
+    - 'bin/**/*'
+    - 'lib/generators/**/*'
+    - 'lib/devise-foundation-views.rb'
+
+Style/Documentation:
+  Enabled: false
+
+Style/StringLiterals:
+  Enabled: true
+  EnforcedStyle: double_quotes
+
+Style/FrozenStringLiteralComment:
+  Enabled: true
+  EnforcedStyle: always
+
+Layout/LineLength:
+  Max: 120
+  Exclude:
+    - '*.gemspec'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+    - '*.gemspec'
+
+Gemspec/DevelopmentDependencies:
+  Enabled: false
+
+Gemspec/AddRuntimeDependency:
+  Enabled: false
+
+Metrics/MethodLength:
+  Exclude:
+    - 'lib/devise_foundation_views_helper.rb'
+    - 'lib/devise_layout_helper.rb'
+
+Metrics/AbcSize:
+  Exclude:
+    - 'lib/devise_foundation_views_helper.rb'
+    - 'lib/devise_layout_helper.rb'
+
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - 'lib/devise_layout_helper.rb'

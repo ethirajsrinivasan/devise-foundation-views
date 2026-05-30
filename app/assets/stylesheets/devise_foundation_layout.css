@@ -1,0 +1,49 @@
+/* Optional layout styles for a dedicated Devise layout (rails g devise:views:foundation_layout). */
+
+html.devise-layout-root,
+body.devise-layout {
+  height: 100%;
+  margin: 0;
+}
+
+body.devise-layout {
+  background: #e6e6e6;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.devise-layout__main {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+}
+
+.devise-layout__main--tall {
+  align-items: flex-start;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+body.devise-layout .devise-foundation-views {
+  width: 100%;
+  max-width: 28rem;
+  margin: 0 !important;
+}
+
+body.devise-layout .devise-form-card {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+body.devise-layout .devise-form-card__title {
+  font-size: 1.75rem;
+  font-weight: 400;
+}
+
+body.devise-layout .devise-links {
+  text-align: center;
+}

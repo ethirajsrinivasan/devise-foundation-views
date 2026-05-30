@@ -1,0 +1,53 @@
+/*
+ * Foundation 6 styles for Devise forms (host app must include Foundation CSS).
+ * Use this file with Sprockets when you do not have a Sass compiler (sassc/dartsass).
+ */
+
+.devise-foundation-views {
+  margin: 2rem 0;
+}
+
+.devise-foundation-views .devise-form-card {
+  background: #fff;
+  border: 1px solid #e6e6e6;
+  border-radius: 0.25rem;
+  padding: 2rem 1.5rem 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.devise-foundation-views .devise-form-card h2 {
+  margin-bottom: 1.5rem;
+}
+
+.devise-foundation-views .devise-form-card label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.devise-foundation-views .devise-form-card input[type="email"],
+.devise-foundation-views .devise-form-card input[type="password"],
+.devise-foundation-views .devise-form-card input[type="text"],
+.devise-foundation-views .devise-form-card input[type="tel"] {
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.devise-foundation-views .devise-form-card .cell {
+  margin-bottom: 1.25rem;
+}
+
+.devise-foundation-views .devise-form-card .help-text {
+  margin-top: -0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.devise-foundation-views .devise-form-card .button.expanded {
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+}
+
+.devise-foundation-views .devise-links {
+  margin-top: 1.5rem;
+  line-height: 1.8;
+}

@@ -1,15 +1,10 @@
-= foundation_devise_error_messages!
-.row
-  .medium-6.medium-centered.columns
-    .login-box
-      .row
-        .large-12.columns
-          = form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post}) do |f|
-            .row
-              %h5.text-center
-                = t('.resend_confirmation_instructions', :default => 'Resend confirmation instructions')
-            .row
-              = f.email_field :email, autofocus: true, class: "large-12 columns", placeholder: "Email"
-            .row
-              = f.submit t('.resend_confirmation_instructions', :default => 'Resend confirmation instructions'), class: "button expand large-12 large-centered columns"
-        = render "devise/shared/links"
+= render layout: "devise/shared/foundation_layout", locals: { title: t(".resend_confirmation_instructions", default: "Resend confirmation instructions") } do
+  = form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
+    = render "devise/shared/error_messages", resource: resource
+    .grid-x.grid-padding-x
+      .cell
+        = f.label :email
+        = f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email)
+      .cell
+        = f.submit t(".resend_confirmation_instructions", default: "Resend confirmation instructions"), class: "button expanded"
+  = render "devise/shared/links"

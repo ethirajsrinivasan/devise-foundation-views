@@ -1,58 +1,130 @@
 # DeviseFoundationViews
 
-[![Build Status](https://travis-ci.org/ethirajsrinivasan/devise-foundation-views.svg?branch=master)](https://travis-ci.org/ethirajsrinivasan/devise-foundation-views)
-[![Code Climate](https://codeclimate.com/github/ethirajsrinivasan/devise-foundation-views/badges/gpa.svg)](https://codeclimate.com/github/ethirajsrinivasan/devise-foundation-views)
-[![security](https://hakiri.io/github/ethirajsrinivasan/devise-foundation-views/master.svg)](https://hakiri.io/github/ethirajsrinivasan/devise-foundation-views/master)
+[![CI](https://github.com/ethirajsrinivasan/devise-foundation-views/actions/workflows/ci.yml/badge.svg)](https://github.com/ethirajsrinivasan/devise-foundation-views/actions/workflows/ci.yml)
+[![Gem Version](https://badge.fury.io/rb/devise-foundation-views.svg)](https://badge.fury.io/rb/devise-foundation-views)
 
-DeviseFoundationViews gem provides you with a foundation based devise views
+Devise authentication views styled with **Foundation for Sites 6**, aligned with the current [Devise](https://github.com/heartcombo/devise) view templates.
+
+## Requirements
+
+- Ruby >= 3.0
+- Rails >= 6.0
+- [Devise](https://github.com/heartcombo/devise) >= 4.9, < 6.0
+  - **Devise 5** requires **Rails 7+**
+- **Foundation 6** CSS in your application (not included in this gem)
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Add to your Gemfile:
 
 ```ruby
-gem 'devise-foundation-views'
+gem 'devise-foundation-views', '~> 1.0.1'
 ```
 
-And then execute:
+```bash
+bundle install
+```
 
-    $ bundle install
+Include gem styles in `application.css`.
 
-To use this gem add this require statement to your application.css file:
+**Sprockets without Sass** (recommended — no `sassc` required):
 
-    # SCSS
-	*= require devise_foundation_views_scss
+```css
+*= require devise_foundation_views
+```
 
-    # LESS
-    *= require devise_foundation_views_less
+**With Sass** (requires `sassc` or `dartsass-rails` in the host app):
 
-you can install the required translations in your config/locales through the generator devise:views:locale, eg.
+```css
+*= require devise_foundation_views_scss
+```
 
-	rails g devise:views:locale it
+Or Less:
 
-will generate config/locales/devise.views.it.yml
+```css
+*= require devise_foundation_views_less
+```
 
-## Customizing Views
+Ensure your app loads **Foundation 6** (e.g. via `foundation-rails`, npm, or CDN).
 
-The devise:views:foundation_templates generator will copy all views to your application, so you can modify the files as you wish:
+### Centered auth layout (optional)
 
-	rails g devise:views:foundation_templates
+Copy a minimal Devise-only layout (centered card, no app chrome):
 
-Support is also provided to generate slim or haml files eg
+```bash
+rails g devise:views:foundation_layout
+```
 
-   	rails g devise:views:foundation_templates slim
+Then add to `ApplicationController`:
 
-## Example
+```ruby
+layout :layout_for_controller
 
-Sample Application can be found at this link - [Devise Foundation Views Application](https://github.com/ethiraj-srinivasan/devise-foundation-views)
+private
 
+def layout_for_controller
+  devise_controller? ? "devise" : "application"
+end
+```
+
+And in `application.css`:
+
+```css
+*= require devise_foundation_layout
+```
+
+### Sign out without Turbo
+
+If you do not use Turbo, sign out must use **DELETE**, not GET:
+
+```erb
+<%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "button" %>
+```
+
+`link_to ..., data: { turbo_method: :delete }` only works when `turbo-rails` is loaded.
+
+## Generators
+
+Copy locale files:
+
+```bash
+rails g devise:views:locale it
+```
+
+Copy Foundation-styled Devise views into your app:
+
+```bash
+rails g devise:views:foundation_templates
+rails g devise:views:foundation_templates slim
+rails g devise:views:foundation_templates haml
+```
+
+## Features (1.0.x)
+
+- Foundation 6 XY grid layout (`grid-container`, `grid-x`, `cell`)
+- `devise/shared/_error_messages` partial (Devise standard)
+- ERB, HAML, and Slim templates
+- Devise 4.9+ and 5.x compatible fields (`autocomplete`, `pending_reconfirmation?`, Turbo confirm on delete)
+- OmniAuth providers use `button_to` with `data-turbo="false"`
+
+## Error messages
+
+Prefer the shared partial (used in all bundled views):
+
+```erb
+<%= render "devise/shared/error_messages", resource: resource %>
+```
+
+`foundation_devise_error_messages!` remains available but is deprecated.
+
+## Upgrading from 0.x
+
+Version **1.0.0** requires Ruby 3.0+, Rails 6.0+, **Foundation 6**, and Devise 4.9+. See [UPGRADE_GUIDE.md](UPGRADE_GUIDE.md).
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/ethirajsrinivasan/devise-foundation-views.
+Bug reports and pull requests are welcome at https://github.com/ethirajsrinivasan/devise-foundation-views.
 
 ## License
 
-The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
-This gem is based on the idea of devise-bootstrap-views
+MIT — see [LICENSE.txt](LICENSE.txt).

@@ -1,4 +1,11 @@
-source 'https://rubygems.org'
+# frozen_string_literal: true
 
-# Specify your gem's dependencies in devise-foundation-views.gemspec
+source "https://rubygems.org"
+
 gemspec
+
+if (rails_version = ENV.fetch("RAILS_VERSION", nil))
+  gem "railties", "~> #{rails_version}.0"
+end
+
+gem "devise", ENV.fetch("DEVISE_VERSION", "~> 4.9")
