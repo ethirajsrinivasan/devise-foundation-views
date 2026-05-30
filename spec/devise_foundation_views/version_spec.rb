@@ -2,7 +2,7 @@
 
 RSpec.describe DeviseFoundationViews do
   it "has a version number" do
-    expect(DeviseFoundationViews::VERSION).not_to be_nil
+    expect(DeviseFoundationViews::VERSION).to eq "1.0.1"
   end
 
   it "defines a Rails engine" do

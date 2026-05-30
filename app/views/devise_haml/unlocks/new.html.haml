@@ -1,14 +1,10 @@
-= foundation_devise_error_messages!
-.row
-  .medium-6.medium-centered.columns
-    .login-box
-      .row
-        .large-12.columns
-          = form_for(resource, :as => resource_name, :url => unlock_path(resource_name), :html => { :method => :post}) do |f|
-            .row
-              %h5.text-center= t('.resend_unlock_instructions', :default => "Resend unlock instructions")
-            .row
-              = f.email_field :email, autofocus: true, class: "large-12 columns", placeholder: "Email"
-            .row
-              = f.submit t('.resend_unlock_instructions', :default => "Resend unlock instructions"), class: "button expand large-12 large-centered columns"
-        = render "devise/shared/links"
+= render layout: "devise/shared/foundation_layout", locals: { title: t(".resend_unlock_instructions", default: "Resend unlock instructions") } do
+  = form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f|
+    = render "devise/shared/error_messages", resource: resource
+    .grid-x.grid-padding-x
+      .cell
+        = f.label :email
+        = f.email_field :email, autofocus: true, autocomplete: "email"
+      .cell
+        = f.submit t(".resend_unlock_instructions", default: "Resend unlock instructions"), class: "button expanded"
+  = render "devise/shared/links"

@@ -22,6 +22,7 @@ jobs:
 
     env:
       RAILS_VERSION: ${{ matrix.rails }}
+      DEVISE_VERSION: '~> 4.9'
 
     steps:
     - uses: actions/checkout@v4
@@ -30,6 +31,27 @@ jobs:
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby }}
+        bundler-cache: true
+
+    - name: Run tests
+      run: bundle exec rake
+
+    - name: Run RuboCop
+      run: bundle exec rubocop
+
+  test-devise-5:
+    runs-on: ubuntu-latest
+    env:
+      RAILS_VERSION: '7.2'
+      DEVISE_VERSION: '~> 5.0'
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.3'
         bundler-cache: true
 
     - name: Run tests

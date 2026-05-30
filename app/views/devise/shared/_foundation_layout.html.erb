@@ -1,0 +1,12 @@
+<div class="grid-container devise-foundation-views">
+  <div class="grid-x grid-padding-x align-center">
+    <div class="small-12 medium-8 large-5 cell">
+      <div class="devise-form-card">
+        <% if local_assigns[:title].present? %>
+          <h2 class="text-center devise-form-card__title"><%= title %></h2>
+        <% end %>
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+</div>

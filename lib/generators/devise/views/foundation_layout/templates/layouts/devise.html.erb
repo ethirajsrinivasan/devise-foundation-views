@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" class="devise-layout-root">
+  <head>
+    <title><%%= devise_page_title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%%= csrf_meta_tags %>
+    <%%= csp_meta_tag %>
+    <!-- Load Foundation 6 in your app (CDN, npm, or foundation-rails) -->
+    <%%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%%= stylesheet_link_tag "devise_foundation_views", "data-turbo-track": "reload" %>
+    <%%= stylesheet_link_tag "devise_foundation_layout", "data-turbo-track": "reload" %>
+  </head>
+  <body class="devise-layout">
+    <%% if notice.present? %>
+      <div class="grid-container" style="padding-top: 1rem;">
+        <div class="callout success" data-closable>
+          <%%= notice %>
+          <button class="close-button" type="button" data-close aria-label="Dismiss">&times;</button>
+        </div>
+      </div>
+    <%% end %>
+    <%% if alert.present? %>
+      <div class="grid-container" style="padding-top: 1rem;">
+        <div class="callout alert" data-closable>
+          <%%= alert %>
+          <button class="close-button" type="button" data-close aria-label="Dismiss">&times;</button>
+        </div>
+      </div>
+    <%% end %>
+
+    <main class="devise-layout__main<%%= " devise-layout__main--tall" if controller_name == "registrations" && action_name == "edit" %>">
+      <%%= yield %>
+    </main>
+
+    <%%= javascript_include_tag "application", "data-turbo-track": "reload" %>
+  </body>
+</html>

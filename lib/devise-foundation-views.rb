@@ -2,6 +2,7 @@
 
 require "rails"
 require "devise_foundation_views_helper"
+require "devise_layout_helper"
 
 module DeviseFoundationViews
   class Engine < Rails::Engine
@@ -13,6 +14,7 @@ module DeviseFoundationViews
       files = Dir[File.join(__dir__, "../locales", "#{pattern}.yml")]
       I18n.load_path.concat(files)
       ActionView::Base.include DeviseFoundationViewsHelper
+      ActionView::Base.include DeviseLayoutHelper
     end
 
     def self.pattern_from(args)
