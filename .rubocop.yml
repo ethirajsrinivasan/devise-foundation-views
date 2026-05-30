@@ -38,7 +38,13 @@ Gemspec/AddRuntimeDependency:
 Metrics/MethodLength:
   Exclude:
     - 'lib/devise_foundation_views_helper.rb'
+    - 'lib/devise_layout_helper.rb'
 
 Metrics/AbcSize:
   Exclude:
     - 'lib/devise_foundation_views_helper.rb'
+    - 'lib/devise_layout_helper.rb'
+
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - 'lib/devise_layout_helper.rb'
