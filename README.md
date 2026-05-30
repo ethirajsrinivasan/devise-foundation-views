@@ -1,10 +1,15 @@
 # DeviseFoundationViews
 
-[![Build Status](https://travis-ci.org/ethirajsrinivasan/devise-foundation-views.svg?branch=master)](https://travis-ci.org/ethirajsrinivasan/devise-foundation-views)
-[![Code Climate](https://codeclimate.com/github/ethirajsrinivasan/devise-foundation-views/badges/gpa.svg)](https://codeclimate.com/github/ethirajsrinivasan/devise-foundation-views)
-[![security](https://hakiri.io/github/ethirajsrinivasan/devise-foundation-views/master.svg)](https://hakiri.io/github/ethirajsrinivasan/devise-foundation-views/master)
+[![CI](https://github.com/ethirajsrinivasan/devise-foundation-views/actions/workflows/ci.yml/badge.svg)](https://github.com/ethirajsrinivasan/devise-foundation-views/actions/workflows/ci.yml)
+[![Gem Version](https://badge.fury.io/rb/devise-foundation-views.svg)](https://badge.fury.io/rb/devise-foundation-views)
 
-DeviseFoundationViews gem provides you with a foundation based devise views
+Devise views styled with the Foundation CSS framework.
+
+## Requirements
+
+- Ruby >= 3.0
+- Rails >= 6.0
+- Devise >= 4.0
 
 ## Installation
 
@@ -16,43 +21,44 @@ gem 'devise-foundation-views'
 
 And then execute:
 
-    $ bundle install
+```bash
+bundle install
+```
 
-To use this gem add this require statement to your application.css file:
+### Asset Pipeline Setup
 
-    # SCSS
-	*= require devise_foundation_views_scss
+Add to your `application.css`:
 
-    # LESS
-    *= require devise_foundation_views_less
+```css
+/* SCSS */
+*= require devise_foundation_views_scss
 
-you can install the required translations in your config/locales through the generator devise:views:locale, eg.
+/* LESS */
+*= require devise_foundation_views_less
+```
 
-	rails g devise:views:locale it
+Install locale files with the generator:
 
-will generate config/locales/devise.views.it.yml
+```bash
+rails g devise:views:locale it
+```
 
 ## Customizing Views
 
-The devise:views:foundation_templates generator will copy all views to your application, so you can modify the files as you wish:
+Copy Foundation-styled Devise views into your app:
 
-	rails g devise:views:foundation_templates
+```bash
+rails g devise:views:foundation_templates
+```
 
-Support is also provided to generate slim or haml files eg
+## Upgrading from 0.x to 1.0
 
-   	rails g devise:views:foundation_templates slim
-
-## Example
-
-Sample Application can be found at this link - [Devise Foundation Views Application](https://github.com/ethiraj-srinivasan/devise-foundation-views)
-
+Version 1.0.0 requires Ruby 3.0+, Rails 6.0+, and Devise 4.x+. See [UPGRADE_GUIDE.md](UPGRADE_GUIDE.md).
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/ethirajsrinivasan/devise-foundation-views.
+Bug reports and pull requests are welcome on GitHub at https://github.com/ethirajsrinivasan/devise-foundation-views. Contributors are expected to adhere to the [Contributor Covenant](CODE_OF_CONDUCT.md) code of conduct.
 
 ## License
 
-The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
-This gem is based on the idea of devise-bootstrap-views
+The gem is available as open source under the terms of the [MIT License](LICENSE.txt).

@@ -1,9 +1,38 @@
+## Ruby/Bundler
 /.bundle/
-/.yardoc
+/vendor/bundle/
 /Gemfile.lock
+
+## Documentation
+/.yardoc/
 /_yardoc/
-/coverage/
 /doc/
-/pkg/
+/rdoc/
+
+## Testing
+/coverage/
 /spec/reports/
+/test/tmp/
+/test/version_tmp/
+
+## Build artifacts
+/pkg/
 /tmp/
+*.gem
+
+## IDE and OS files
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.ruby-version
+.ruby-gemset
+
+## Environment
+.env
+.env.local
+
+## Logs
+npm-debug.log

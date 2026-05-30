@@ -1,7 +1,6 @@
-# coding: utf-8
-lib = File.expand_path('../lib', __FILE__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'version'
+# frozen_string_literal: true
+
+require_relative "lib/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "devise-foundation-views"
@@ -9,25 +8,37 @@ Gem::Specification.new do |spec|
   spec.authors       = ["ethi"]
   spec.email         = ["ethirajsrinivasan@gmail.com"]
 
-  spec.summary       = "Devise views based on foundation framework"
-  spec.description   = "Devise views based on foundation framework"
+  spec.summary       = "Devise views based on Foundation framework"
+  spec.description   = "A Rails engine providing Foundation CSS styled Devise views in ERB, HAML, and Slim with locale generators"
   spec.homepage      = "https://github.com/ethirajsrinivasan/devise-foundation-views"
   spec.license       = "MIT"
 
-  # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
-  # delete this section to allow pushing this gem to any host.
-  if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = "https://rubygems.org"
-  else
-    raise "RubyGems 2.0 or newer is required to protect against public gem pushes."
+  spec.metadata = {
+    "allowed_push_host" => "https://rubygems.org",
+    "homepage_uri" => spec.homepage,
+    "source_code_uri" => "https://github.com/ethirajsrinivasan/devise-foundation-views",
+    "bug_tracker_uri" => "https://github.com/ethirajsrinivasan/devise-foundation-views/issues",
+    "changelog_uri" => "https://github.com/ethirajsrinivasan/devise-foundation-views/blob/master/CHANGELOG.md",
+    "documentation_uri" => "https://github.com/ethirajsrinivasan/devise-foundation-views/blob/master/README.md",
+    "rubygems_mfa_required" => "true"
+  }
+
+  spec.files = Dir.chdir(__dir__) do
+    `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   end
 
-  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
-  spec.required_ruby_version = '>= 1.9.3'
-  spec.add_development_dependency "bundler", "~> 1.10"
-  spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency 'rspec'
+
+  spec.required_ruby_version = ">= 3.0"
+
+  spec.add_runtime_dependency "devise", ">= 4.0", "< 5.0"
+  spec.add_runtime_dependency "railties", ">= 6.0", "< 9.0"
+
+  spec.add_development_dependency "bundler", "~> 2.4"
+  spec.add_development_dependency "bundler-audit", "~> 0.9"
+  spec.add_development_dependency "rake", "~> 13.0"
+  spec.add_development_dependency "rspec", "~> 3.12"
+  spec.add_development_dependency "rubocop", "~> 1.50"
 end
